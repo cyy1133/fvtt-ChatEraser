@@ -15,7 +15,7 @@ Foundry Virtual Tabletop module for bulk-selecting chat messages in the chat sid
 Install from Foundry's `Install Module` dialog using this manifest URL:
 
 ```text
-https://raw.githubusercontent.com/cyy1133/fvtt-ChatEraser/main/module.json
+https://raw.githubusercontent.com/cyy1133/fvtt-ChatEraser/main/manifest.json
 ```
 
 For manual installation, place the extracted files in:

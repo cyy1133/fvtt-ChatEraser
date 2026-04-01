@@ -29,19 +29,23 @@ Hooks.once("init", () => {
 });
 
 Hooks.once("ready", () => {
-  ui.chat?.render({ force: true });
+  rerenderChatLog();
 });
 
-Hooks.on("renderChatLog", (application, element) => {
+Hooks.on("renderChatLog", (application, rendered) => {
+  const element = resolveElement(rendered);
+  if (!element) return;
   bindChatLogListeners(element);
   ensureToolbar(element);
   syncLogElement(element);
 });
 
 Hooks.on("renderChatMessageHTML", (message, html) => {
-  decorateMessage(message, html);
-  syncMessageElement(html);
-  syncAllToolbars();
+  handleRenderedMessage(message, html);
+});
+
+Hooks.on("renderChatMessage", (message, html) => {
+  handleRenderedMessage(message, html);
 });
 
 Hooks.on("deleteChatMessage", (message) => {
@@ -50,6 +54,31 @@ Hooks.on("deleteChatMessage", (message) => {
   pruneSelection();
   syncAllToolbars();
 });
+
+function resolveElement(rendered) {
+  if (!rendered) return null;
+  if (rendered instanceof HTMLElement) return rendered;
+  if (rendered?.jquery && rendered.length) return rendered[0];
+  if (Array.isArray(rendered) && rendered[0] instanceof HTMLElement) return rendered[0];
+  return null;
+}
+
+function handleRenderedMessage(message, rendered) {
+  const element = resolveElement(rendered);
+  if (!element) return;
+  decorateMessage(message, element);
+  syncMessageElement(element);
+  syncAllToolbars();
+}
+
+function rerenderChatLog() {
+  if (!ui.chat?.render) return;
+  try {
+    ui.chat.render({ force: true });
+  } catch {
+    ui.chat.render(true);
+  }
+}
 
 Hooks.on("updateChatMessage", (message) => {
   if (state.selectedIds.has(message.id) && !canDeleteMessage(message)) {
@@ -369,6 +398,19 @@ async function confirmDeletion(count) {
       window: { title },
       content,
       rejectClose: false
+    });
+  }
+
+  if (typeof Dialog?.confirm === "function") {
+    return new Promise((resolve) => {
+      Dialog.confirm({
+        title,
+        content,
+        yes: () => resolve(true),
+        no: () => resolve(false),
+        defaultYes: false,
+        close: () => resolve(false)
+      });
     });
   }
 

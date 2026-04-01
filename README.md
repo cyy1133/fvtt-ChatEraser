@@ -28,5 +28,5 @@ Then enable `ChatEraser` in the world module list.
 
 ## Notes
 
-- The module targets Foundry VTT V13.
+- The module targets Foundry VTT V12 and V13.
 - This initial version focuses on checkbox/range selection inside the chat sidebar UI.

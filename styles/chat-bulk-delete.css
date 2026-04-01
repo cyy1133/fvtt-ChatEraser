@@ -1,0 +1,96 @@
+.chat-bulk-delete__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0 0 0.5rem;
+  padding: 0.4rem;
+  border: 1px solid var(--color-border-light-2, rgba(0, 0, 0, 0.18));
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--color-bg-option, #ffffff) 88%, transparent);
+}
+
+.chat-bulk-delete__toolbar.is-active {
+  border-color: var(--color-warm-2, #c36f09);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-warm-2, #c36f09) 25%, transparent);
+}
+
+.chat-bulk-delete__button {
+  flex: 0 0 auto;
+}
+
+.chat-bulk-delete__button--danger:not(:disabled) {
+  color: #fff;
+  background: #a02323;
+  border-color: #7f1717;
+}
+
+.chat-bulk-delete__count,
+.chat-bulk-delete__hint {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary, #555);
+}
+
+.chat-bulk-delete__hint {
+  margin-left: auto;
+}
+
+[data-chat-bulk-delete-message-id].chat-bulk-delete--mode.chat-bulk-delete--selectable {
+  position: relative;
+  padding-left: 2rem;
+  cursor: pointer;
+}
+
+[data-chat-bulk-delete-message-id].chat-bulk-delete--mode.chat-bulk-delete--selected {
+  outline: 2px solid color-mix(in srgb, var(--color-warm-2, #c36f09) 55%, transparent);
+  outline-offset: -2px;
+  background: color-mix(in srgb, var(--color-warm-1, #f7d08b) 20%, transparent);
+}
+
+[data-chat-bulk-delete-message-id].chat-bulk-delete--locked {
+  opacity: 0.8;
+}
+
+.chat-bulk-delete__toggle {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.45rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.1rem;
+  height: 1.1rem;
+  margin: 0;
+  cursor: pointer;
+}
+
+.chat-bulk-delete__checkbox {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.chat-bulk-delete__box {
+  display: inline-flex;
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid var(--color-border-dark-3, rgba(0, 0, 0, 0.5));
+  border-radius: 4px;
+  background: var(--color-bg-option, #ffffff);
+  transition: background-color 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.chat-bulk-delete__checkbox:checked + .chat-bulk-delete__box {
+  border-color: var(--color-warm-2, #c36f09);
+  background: var(--color-warm-2, #c36f09);
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.95);
+}
+
+.chat-bulk-delete__checkbox:disabled + .chat-bulk-delete__box {
+  opacity: 0.45;
+}

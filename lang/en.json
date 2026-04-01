@@ -1,0 +1,26 @@
+{
+  "chat-eraser": {
+    "controls": {
+      "enable": "Bulk Select",
+      "disable": "Exit Bulk Select",
+      "clear": "Clear",
+      "delete": "Delete Selected",
+      "selectedCount": "Selected: {count}",
+      "hintEnabled": "Click to toggle. Shift-click selects a range of deletable messages.",
+      "hintDisabled": "Enable bulk mode to select multiple chat messages."
+    },
+    "messages": {
+      "checkbox": "Select chat message for bulk deletion"
+    },
+    "confirm": {
+      "title": "Delete selected chat messages",
+      "body": "Delete {count} selected chat messages? Only messages you are allowed to remove will be deleted.",
+      "fallback": "Delete {count} selected chat messages?"
+    },
+    "notifications": {
+      "noneSelected": "No deletable chat messages are selected.",
+      "deleted": "{count} chat messages deleted.",
+      "deleteFailed": "Bulk chat deletion failed. Check the console for details."
+    }
+  }
+}

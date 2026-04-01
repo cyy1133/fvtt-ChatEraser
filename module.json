@@ -1,0 +1,39 @@
+{
+  "id": "chat-eraser",
+  "title": "ChatEraser",
+  "description": "Adds a bulk selection mode to the Foundry VTT chat sidebar so users can range-select and delete only the chat messages they are allowed to remove.",
+  "authors": [
+    {
+      "name": "cyy1133"
+    }
+  ],
+  "version": "0.1.0",
+  "compatibility": {
+    "minimum": "13",
+    "verified": "13.350"
+  },
+  "manifest": "https://raw.githubusercontent.com/cyy1133/fvtt-ChatEraser/main/module.json",
+  "download": "https://github.com/cyy1133/fvtt-ChatEraser/releases/download/v0.1.0/fvtt-ChatEraser-v0.1.0.zip",
+  "esmodules": [
+    "scripts/chat-bulk-delete.js"
+  ],
+  "styles": [
+    "styles/chat-bulk-delete.css"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    },
+    {
+      "lang": "ko",
+      "name": "Korean",
+      "path": "lang/ko.json"
+    }
+  ],
+  "url": "https://github.com/cyy1133/fvtt-ChatEraser",
+  "readme": "https://raw.githubusercontent.com/cyy1133/fvtt-ChatEraser/main/README.md",
+  "license": "https://raw.githubusercontent.com/cyy1133/fvtt-ChatEraser/main/LICENSE",
+  "bugs": "https://github.com/cyy1133/fvtt-ChatEraser/issues"
+}

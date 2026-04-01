@@ -1,43 +1,51 @@
 .chat-bulk-delete__toolbar {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   gap: 0.35rem;
-  margin: 0 0 0.5rem;
-  padding: 0.4rem;
+  justify-content: flex-end;
+  margin: 0 0 0.25rem;
+  padding: 0;
+}
+
+.chat-bulk-delete__icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
   border: 1px solid var(--color-border-light-2, rgba(0, 0, 0, 0.18));
-  border-radius: 8px;
-  background: color-mix(in srgb, var(--color-bg-option, #ffffff) 88%, transparent);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--color-bg-option, #ffffff) 92%, transparent);
+  color: var(--color-text-dark-primary, #222);
+  box-shadow: none;
 }
 
-.chat-bulk-delete__toolbar.is-active {
-  border-color: var(--color-warm-2, #c36f09);
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-warm-2, #c36f09) 25%, transparent);
+.chat-bulk-delete__icon-button i {
+  margin: 0;
+  font-size: 0.9rem;
+  pointer-events: none;
 }
 
-.chat-bulk-delete__button {
-  flex: 0 0 auto;
-}
-
-.chat-bulk-delete__button--danger:not(:disabled) {
+.chat-bulk-delete__icon-button.is-active {
   color: #fff;
-  background: #a02323;
+  border-color: #91500a;
+  background: #b56511;
+}
+
+.chat-bulk-delete__icon-button--danger:not(:disabled) {
+  color: #fff;
   border-color: #7f1717;
+  background: #a02323;
 }
 
-.chat-bulk-delete__count,
-.chat-bulk-delete__hint {
-  font-size: 0.85rem;
-  color: var(--color-text-secondary, #555);
-}
-
-.chat-bulk-delete__hint {
-  margin-left: auto;
+.chat-bulk-delete__icon-button:disabled {
+  opacity: 0.45;
 }
 
 [data-chat-bulk-delete-message-id].chat-bulk-delete--mode.chat-bulk-delete--selectable {
   position: relative;
-  padding-left: 2rem;
+  padding-left: 1.85rem;
   cursor: pointer;
 }
 
@@ -53,13 +61,13 @@
 
 .chat-bulk-delete__toggle {
   position: absolute;
-  top: 0.75rem;
-  left: 0.45rem;
+  top: 0.65rem;
+  left: 0.35rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.1rem;
-  height: 1.1rem;
+  width: 1rem;
+  height: 1rem;
   margin: 0;
   cursor: pointer;
 }

@@ -1,13 +1,9 @@
 {
   "chat-eraser": {
     "controls": {
-      "enable": "Bulk Select",
-      "disable": "Exit Bulk Select",
-      "clear": "Clear",
-      "delete": "Delete Selected",
-      "selectedCount": "Selected: {count}",
-      "hintEnabled": "Click to toggle. Shift-click selects a range of deletable messages.",
-      "hintDisabled": "Enable bulk mode to select multiple chat messages."
+      "enable": "Enable chat bulk select",
+      "disable": "Disable chat bulk select",
+      "deleteSelected": "Delete selected chat messages ({count})"
     },
     "messages": {
       "checkbox": "Select chat message for bulk deletion"

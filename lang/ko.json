@@ -1,13 +1,9 @@
 {
   "chat-eraser": {
     "controls": {
-      "enable": "일괄 선택",
-      "disable": "일괄 선택 종료",
-      "clear": "선택 해제",
-      "delete": "선택 삭제",
-      "selectedCount": "선택됨: {count}",
-      "hintEnabled": "클릭으로 토글하고, Shift+클릭으로 삭제 가능한 메시지 범위를 선택합니다.",
-      "hintDisabled": "여러 채팅을 고르려면 일괄 선택 모드를 켜세요."
+      "enable": "채팅 일괄 선택 활성화",
+      "disable": "채팅 일괄 선택 비활성화",
+      "deleteSelected": "선택한 채팅 삭제 ({count})"
     },
     "messages": {
       "checkbox": "일괄 삭제할 채팅 메시지 선택"

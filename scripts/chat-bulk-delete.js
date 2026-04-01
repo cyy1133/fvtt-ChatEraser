@@ -2,10 +2,7 @@ const MODULE_ID = "chat-eraser";
 const SELECTORS = {
   toolbar: "[data-chat-bulk-delete-toolbar]",
   toolbarMode: "[data-action='chat-bulk-delete-toggle-mode']",
-  toolbarClear: "[data-action='chat-bulk-delete-clear-selection']",
   toolbarDelete: "[data-action='chat-bulk-delete-delete-selection']",
-  toolbarCount: "[data-chat-bulk-delete-count]",
-  toolbarHint: "[data-chat-bulk-delete-hint]",
   message: "[data-chat-bulk-delete-message-id]",
   checkbox: "[data-chat-bulk-delete-checkbox]",
   messageToggle: "[data-chat-bulk-delete-toggle]"
@@ -103,13 +100,6 @@ function onChatLogClick(event) {
     return;
   }
 
-  const clearButton = event.target.closest(SELECTORS.toolbarClear);
-  if (clearButton) {
-    event.preventDefault();
-    clearSelection({ preserveMode: true });
-    return;
-  }
-
   const deleteButton = event.target.closest(SELECTORS.toolbarDelete);
   if (deleteButton) {
     event.preventDefault();
@@ -166,11 +156,12 @@ function ensureToolbar(element) {
     toolbar.className = "chat-bulk-delete__toolbar";
     toolbar.dataset.chatBulkDeleteToolbar = "true";
     toolbar.innerHTML = `
-      <button type="button" class="chat-bulk-delete__button" data-action="chat-bulk-delete-toggle-mode"></button>
-      <button type="button" class="chat-bulk-delete__button" data-action="chat-bulk-delete-clear-selection"></button>
-      <button type="button" class="chat-bulk-delete__button chat-bulk-delete__button--danger" data-action="chat-bulk-delete-delete-selection"></button>
-      <span class="chat-bulk-delete__count" data-chat-bulk-delete-count></span>
-      <span class="chat-bulk-delete__hint" data-chat-bulk-delete-hint></span>
+      <button type="button" class="chat-bulk-delete__icon-button" data-action="chat-bulk-delete-toggle-mode">
+        <i class="fas fa-check-double" aria-hidden="true"></i>
+      </button>
+      <button type="button" class="chat-bulk-delete__icon-button chat-bulk-delete__icon-button--danger" data-action="chat-bulk-delete-delete-selection" hidden>
+        <i class="fas fa-trash" aria-hidden="true"></i>
+      </button>
     `;
 
     const inputPart =
@@ -190,25 +181,23 @@ function updateToolbar(toolbar) {
   pruneSelection();
 
   const modeButton = toolbar.querySelector(SELECTORS.toolbarMode);
-  const clearButton = toolbar.querySelector(SELECTORS.toolbarClear);
   const deleteButton = toolbar.querySelector(SELECTORS.toolbarDelete);
-  const count = toolbar.querySelector(SELECTORS.toolbarCount);
-  const hint = toolbar.querySelector(SELECTORS.toolbarHint);
-
   const selectedCount = state.selectedIds.size;
-  modeButton.textContent = state.enabled
+
+  const modeLabel = state.enabled
     ? game.i18n.localize(`${MODULE_ID}.controls.disable`)
     : game.i18n.localize(`${MODULE_ID}.controls.enable`);
-  clearButton.textContent = game.i18n.localize(`${MODULE_ID}.controls.clear`);
-  deleteButton.textContent = game.i18n.localize(`${MODULE_ID}.controls.delete`);
-  clearButton.disabled = !selectedCount;
-  deleteButton.disabled = !selectedCount;
-  count.textContent = game.i18n.format(`${MODULE_ID}.controls.selectedCount`, {
+  modeButton.ariaLabel = modeLabel;
+  modeButton.title = modeLabel;
+  modeButton.classList.toggle("is-active", state.enabled);
+
+  const deleteLabel = game.i18n.format(`${MODULE_ID}.controls.deleteSelected`, {
     count: selectedCount
   });
-  hint.textContent = state.enabled
-    ? game.i18n.localize(`${MODULE_ID}.controls.hintEnabled`)
-    : game.i18n.localize(`${MODULE_ID}.controls.hintDisabled`);
+  deleteButton.ariaLabel = deleteLabel;
+  deleteButton.title = deleteLabel;
+  deleteButton.hidden = !state.enabled;
+  deleteButton.disabled = !selectedCount;
   toolbar.classList.toggle("is-active", state.enabled);
 }
 

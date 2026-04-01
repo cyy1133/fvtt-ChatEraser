@@ -150,6 +150,8 @@ function shouldHandleMessageClick(event) {
 }
 
 function ensureToolbar(element) {
+  element.classList.add("chat-bulk-delete__root");
+
   let toolbar = element.querySelector(SELECTORS.toolbar);
   if (!toolbar) {
     toolbar = document.createElement("section");
@@ -163,15 +165,7 @@ function ensureToolbar(element) {
         <i class="fas fa-trash" aria-hidden="true"></i>
       </button>
     `;
-
-    const inputPart =
-      element.querySelector("[data-application-part='input']") ??
-      element.querySelector("form");
-    if (inputPart?.parentElement) {
-      inputPart.parentElement.insertBefore(toolbar, inputPart);
-    } else {
-      element.prepend(toolbar);
-    }
+    element.append(toolbar);
   }
 
   updateToolbar(toolbar);

@@ -1,10 +1,19 @@
+.chat-bulk-delete__root {
+  position: relative;
+}
+
 .chat-bulk-delete__toolbar {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 0.35rem;
-  justify-content: flex-end;
-  margin: 0 0 0.25rem;
+  position: absolute;
+  left: 6px;
+  bottom: 8px;
+  z-index: 30;
   padding: 0;
+  margin: 0;
+  width: 28px;
 }
 
 .chat-bulk-delete__icon-button {
@@ -19,6 +28,10 @@
   background: color-mix(in srgb, var(--color-bg-option, #ffffff) 92%, transparent);
   color: var(--color-text-dark-primary, #222);
   box-shadow: none;
+}
+
+.chat-bulk-delete__toolbar.is-active {
+  gap: 0.25rem;
 }
 
 .chat-bulk-delete__icon-button i {

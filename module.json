@@ -7,13 +7,13 @@
       "name": "cyy1133"
     }
   ],
-  "version": "0.1.3",
+  "version": "0.1.4",
   "compatibility": {
     "minimum": "12",
     "verified": "13.350"
   },
   "manifest": "https://raw.githubusercontent.com/cyy1133/fvtt-ChatEraser/main/manifest.json",
-  "download": "https://github.com/cyy1133/fvtt-ChatEraser/releases/download/v0.1.3/fvtt-ChatEraser-v0.1.3.zip",
+  "download": "https://github.com/cyy1133/fvtt-ChatEraser/releases/download/v0.1.4/fvtt-ChatEraser-v0.1.4.zip",
   "esmodules": [
     "scripts/chat-bulk-delete.js"
   ],
